@@ -7,8 +7,7 @@ The application will also allow employers to add departments, roles and employee
 Built with:
 MySql
 Node
-JavaScript
-Express
+JavaScrip
 Inquirer
 
 Code Sample:
