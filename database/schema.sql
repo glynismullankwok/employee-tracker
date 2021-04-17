@@ -3,6 +3,7 @@ CREATE DATABASE emptrack_db;
 
 USE emptrack_db;
 
+
 CREATE TABLE department (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(30) UNIQUE NOT NULL
@@ -28,5 +29,27 @@ manager_id INT UNSIGNED,
 INDEX man_ind (manager_id),
 CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES employee(id) ON DELETE SET NULL
 );
+
+
+
+
+-- CREATE TABLE department (
+--     id INT AUTO_INCREMENT NOT NULL,
+--     name VARCHAR(30),
+--     department_id INT(10)
+-- );
+-- CREATE TABLE role (
+--     id INT AUTO_INCREMENT NOT NULL,
+--     title VARCHAR(30),
+--     salary DECIMAL(10,2),
+--     department_id INT(10)
+-- );
+-- CREATE TABLE employee (
+--     id INT AUTO_INCREMENT NOT NULL,
+--     first_name VARCHAR(30) NOT NULL,
+--     last_name VARCHAR(30) NOT NULL,
+--     role_id INT(10),
+--     manager_id INT(10) NULL
+-- );
 
 
