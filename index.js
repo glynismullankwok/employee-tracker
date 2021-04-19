@@ -69,7 +69,17 @@ function viewRoles() {
             console.log(`ID: ${role.id} | Title: ${role.title} |
             Salary: ${role.salary} | Department ID: ${role.department_id}`);
         })
-        // start();
+        inquirer.prompt([{
+            type:"list",
+           name:"choices",
+           choices: ["back to main menu", "Exit"]
+           }]).then ((answer)=>{
+               if (answer.choices[0]){
+                   questions();
+               }else if (answer.choices[1]){
+                   exit();
+               }
+           })
     });
 };
 function viewEmployees() {
@@ -81,7 +91,17 @@ function viewEmployees() {
             console.log(`ID: ${employee.id} | Name: ${employee.first_name} ${employee.last_name} |
             Role ID: ${employee.role_id} | Manager ID: ${employee.manager_id}`)
         })
-        // start();
+        inquirer.prompt([{
+            type:"list",
+           name:"choices",
+           choices: ["back to main menu", "Exit"]
+           }]).then ((answer)=>{
+               if (answer.choices[0]){
+                   questions();
+               }else if (answer.choices[1]){
+                   exit();
+               }
+           })
     });
 };
 function addDepartment() {
