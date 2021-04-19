@@ -171,41 +171,48 @@ function addRole() {
     })
 }
 
-async function addEmployee() {
-    connection.query('SELECT * FROM employee', function (err, result) {
+   async function addEmployee() {
+    connection.query('SELECT * FROM employee', function (err, res) {
         if (err) throw (err);
         inquirer
             .prompt([{
-                name: "firstName",
+                name: "first_name",
                 type: "input",
                 message: "What is the employee's first name?",
             },
             {
-                name: "lastName",
+                name: "last-name",
                 type: "input",
                 message: "What is the employee's last name?",
             },
             {
-                name: "roleName",
+                name: "title",
                 type: "list",
-
-                message: "What role does the employee have?",
-                choices: viewRoles()
-                    
-                 
-                }
+                message: "What is the employee's title?",
+                choices: [
+                    'Sales Lead',
+                    'Salesperson',
+                    'Lead Engineer',
+                    'Software Engineer',
+                    'Account Manager',
+                    'Legal Team Lead',
+                    'Lawyer'
+                ]
+            
+                
+               },
             
             ])
 
             .then(function (answer) {
-                console.log(answer);
-                const role = answer.roleName;
+                
+                const role = answer.role_id;
                 connection.query('SELECT * FROM role', function (err, res) {
                     if (err) throw (err);
                     let filteredRole = res.filter(function (res) {
-                        return res.title == role;
+                        return res.role == role_id;
                     })
-                    let roleId = filteredRole[0].id;
+                    let role_id = filteredRole[0].id;
                     connection.query("SELECT * FROM employee", function (err, res) {
                         inquirer
                             .prompt([
@@ -233,8 +240,8 @@ async function addEmployee() {
                                     let managerId = filteredManager[0].id;
                                     console.log(managerAnswer);
                                     let query = "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)";
-                                    let values = [answer.firstName, answer.lastName, roleId, managerId]
-                                    console.log(values);
+                                    let values = [answer.first_name, answer.last_name, role_id, manager_id]
+                                  
                                     connection.query(query, values,
                                         function (err, res, fields) {
                                             console.log(`You have added this employee: ${(values[0]).toUpperCase()}.`)
