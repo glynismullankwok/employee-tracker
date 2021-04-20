@@ -16,5 +16,6 @@ JavaScrip
 Inquirer
 
 ## Demo:
+![Employee Tracker](https://user-images.githubusercontent.com/70453836/115325524-c5f10380-a159-11eb-9e89-e56aba2b0e9e.gif)
 
 
